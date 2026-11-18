@@ -1,0 +1,294 @@
+<html>
+<head>
+    <title>Virtual University</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7fb;
+        }
+
+        header {
+            background-color: #073b70;
+            color: white;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header h2 {
+            font-size: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            color: #ffc107;
+        }
+
+        .hero {
+            background: linear-gradient(
+                rgba(0,40,80,0.8),
+                rgba(0,40,80,0.8)
+            ),
+            url("https://yt3.googleusercontent.com/ytc/AIdro_lxTgW3Pk5bjw8DwIC9UomYGpFMMsf5TYMed3AowDrZnUo=s900-c-k-c0x00ffffff-no-rj");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 110px 20px;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        button {
+            background-color: #ffc107;
+            color: black;
+            border: none;
+            padding: 12px 25px;
+            margin: 8px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background-color: orange;
+        }
+
+        section {
+            padding: 55px 7%;
+            text-align: center;
+        }
+
+        section h2 {
+            color: #073b70;
+            margin-bottom: 25px;
+        }
+
+        .courses {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 25px;
+            width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px #ccc;
+        }
+
+        .card h3 {
+            color: #073b70;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            margin-bottom: 15px;
+        }
+
+        .about {
+            background-color: white;
+        }
+
+        .contact {
+            background-color: #e8f0fa;
+        }
+
+        footer {
+            background-color: #073b70;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #loginBox {
+            display: none;
+            background: white;
+            padding: 25px;
+            width: 300px;
+            margin: 20px auto;
+            box-shadow: 0 2px 10px #aaa;
+            border-radius: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+       
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2> Virtual University</h2>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#courses">Courses</a>
+            <a href="#contact">Contact</a>
+            <a href="#" onclick="showLogin()">Login</a>
+        </nav>
+    </header>
+
+    <div class="hero" id="home">
+        <h1>Welcome to Virtual University</h1>
+
+        <p>Learn Anywhere, Anytime and Build Your Future</p>
+
+        <button onclick="showLogin()">Student Login</button>
+
+        <button onclick="goCourses()">Explore Courses</button>
+    </div>
+
+    <div id="loginBox">
+        <h2>Student Login</h2>
+
+        <input type="text" id="username"
+        placeholder="Enter Your Username">
+
+        <input type="password" id="password"
+        placeholder="Enter Your Password">
+
+        <button onclick="login()">Login</button>
+
+        <button onclick="closeLogin()">Close</button>
+    </div>
+
+    <section class="about" id="about">
+
+        <h2>About Our University</h2>
+
+        <p>
+            Virtual University provides quality education
+            through modern technology. Students can learn
+            from anywhere and improve their skills.
+        </p>
+
+    </section>
+
+    <section id="courses">
+
+        <h2>Our Popular Courses</h2>
+
+        <div class="courses">
+
+            <div class="card">
+                <h3>Computer Science</h3>
+                <p>Learn programming and computer skills.</p>
+                <button onclick="courseInfo('Computer Science')">
+                    View Details
+                </button>
+            </div>
+
+            <div class="card">
+                <h3>Business Administration</h3>
+                <p>Learn business and management skills.</p>
+                <button onclick="courseInfo('Business Administration')">
+                    View Details
+                </button>
+            </div>
+
+            <div class="card">
+                <h3>Information Technology</h3>
+                <p>Learn about modern technology.</p>
+                <button onclick="courseInfo('Information Technology')">
+                    View Details
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="contact" id="contact">
+
+        <h2>Contact Us</h2>
+
+        <p>Email: info@virtualuniversity.edu.pk</p>
+
+        <p>Phone: 021-1234567</p>
+
+        <button onclick="contactMessage()">
+            Contact Now
+        </button>
+
+    </section>
+
+    <footer>
+        <p>© 2026 Virtual University | All Rights Reserved</p>
+    </footer>
+
+    <script>
+
+        function showLogin() {
+            document.getElementById("loginBox").style.display = "block";
+
+            document.getElementById("loginBox").scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
+        function closeLogin() {
+            document.getElementById("loginBox").style.display = "none";
+        }
+
+        function login() {
+
+            var user = document.getElementById("username").value;
+            var pass = document.getElementById("password").value;
+
+            if (user == "" || pass == "") {
+                alert("Please enter username and password");
+            }
+            else {
+                alert("Demo Login Successful! Welcome " + user);
+            }
+        }
+
+        function goCourses() {
+            document.getElementById("courses").scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
+        function courseInfo(name) {
+            alert("You selected: " + name);
+        }
+
+        function contactMessage() {
+            alert("Thank you for contacting Virtual University!");
+        }
+
+    </script>
+
+</body>
+</html>
